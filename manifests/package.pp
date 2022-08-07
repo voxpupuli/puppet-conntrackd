@@ -18,16 +18,14 @@ class conntrackd::package {
 
   #### Package management
 
-  # set params: in operation
   if $conntrackd::ensure == 'present' {
-
+    # set params: in operation
     $package_ensure = $conntrackd::autoupgrade ? {
       true  => 'latest',
       false => 'present',
     }
-
-  # set params: removal
   } else {
+    # set params: removal
     $package_ensure = 'purged'
   }
 
@@ -35,5 +33,4 @@ class conntrackd::package {
   package { $conntrackd::package:
     ensure => $package_ensure,
   }
-
 }

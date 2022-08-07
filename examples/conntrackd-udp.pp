@@ -1,6 +1,6 @@
 # UDP Syncing with conntrackd
 
-class  { 'conntrackd::config':
+class { 'conntrackd::config':
   protocol      => 'UDP',
   interface     => 'eth0',
   ipv4_address  => '192.168.122.162',

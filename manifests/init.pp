@@ -300,12 +300,15 @@
 class conntrackd (
   Enum['present', 'absent']        $ensure,
   Boolean                          $autoupgrade,
+  # Workaround for https://github.com/voxpupuli/puppet-lint-trailing_comma-check/issues/16
+  # lint:ignore:trailing_comma
   Enum[
     'enabled',
     'disabled',
     'running',
     'unmanaged'
   ]                                $status,
+  # lint:endignore
   Array                            $package,
   String                           $service_name,
   Boolean                          $service_hasrestart,
@@ -395,11 +398,8 @@ class conntrackd (
 
     # we need the software before running a service
     Class['conntrackd::package'] -> Class['conntrackd::config'] ~> Class['conntrackd::service']
-
   } else {
-
     # make sure all services are getting stopped before software removal
     Class['conntrackd::service'] -> Class['conntrackd::package']
   }
-
 }
