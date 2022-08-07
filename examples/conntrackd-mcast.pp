@@ -7,4 +7,3 @@ class { 'conntrackd::config':
   ipv4_address   => '224.0.0.1',
   ipv4_interface => '192.168.122.162',
 }
-

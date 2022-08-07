@@ -22,9 +22,8 @@ class conntrackd::service {
 
   #### Service management
 
-  # set params: in operation
   if $conntrackd::ensure == 'present' {
-
+    # set params: in operation
     case $conntrackd::status {
       # make sure service is currently running, start it on boot
       'enabled': {
@@ -53,15 +52,13 @@ class conntrackd::service {
         fail("\"${conntrackd::status}\" is an unknown service status value")
       }
     }
-
-  # set params: removal
   } else {
+    # set params: removal
 
     # make sure the service is stopped and disabled (the removal itself will be
     # done by package.pp)
     $service_ensure = 'stopped'
     $service_enable = false
-
   }
 
   # action
@@ -74,5 +71,4 @@ class conntrackd::service {
     pattern    => $conntrackd::service_pattern,
     status     => $conntrackd::service_status,
   }
-
 }

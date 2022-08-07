@@ -293,15 +293,14 @@ class conntrackd::config (
 
   #### Config management
 
-  # set params: in operation
   if $ensure == 'present' {
-      $config_exists     = 'present'
-      $config_dir_exists = 'directory'
-
-  # set params: removal
+    # set params: in operation
+    $config_exists     = 'present'
+    $config_dir_exists = 'directory'
   } else {
-      $config_exists     = 'absent'
-      $config_dir_exists = 'absent'
+    # set params: removal
+    $config_exists     = 'absent'
+    $config_dir_exists = 'absent'
   }
 
   # sanity check some paramaters
