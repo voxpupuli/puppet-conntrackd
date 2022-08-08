@@ -60,7 +60,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.10.0 < 8.0.0"
+      "version_requirement": ">= 6.1.0 < 8.0.0"
     }
   ],
   "description": "Install and manages to conntrackd service to help manage stateful firewall failover",
