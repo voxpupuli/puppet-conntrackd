@@ -1,10 +1,10 @@
 {
-  "name": "bisscuitt-conntrackd",
+  "name": "puppet-conntrackd",
   "version": "2.0.0",
-  "author": "bisscuitt",
+  "author": "Vox Pupuli",
   "summary": "Manages conntrackd service",
   "license": "Apache-2.0",
-  "source": "git://github.com/bisscuitt/puppet-module-conntrackd.git",
+  "source": "https://github.com/voxpupuli/puppet-conntrackd.git",
   "project_page": "https://github.com/bisscuitt/puppet-module-conntrackd",
   "dependencies": [
     {
