@@ -2,9 +2,9 @@
 
 Puppet module to manage conntrackd.
 
-Have a look at the main module class (<tt>init.pp</tt>) to see what this
-module does on a node plus usage examples.
-
+Have a look at [`REFERENCE.md`](REFERENCE.md) or the main module class
+([`init.pp`](manifests/init.pp)) to see what this module does on a node plus
+usage examples.
 
 ## Compatibility
 
@@ -16,52 +16,47 @@ This module is designed to work with Puppet version 4.10 or newer.
 
 ## Requirements
 
-This module has got the following module dependencies:
+This module has the following dependencies:
 
-[stdlib](https://forge.puppet.com/puppetlabs/stdlib)
-  Version 4.19.0 or newer. Standard library of useful resources by Puppet Labs.
-  It provides functions like validate\_\*(), is\_\*() and empty().
-  More information:
-  * stdlib at Puppet Forge <https://forge.puppet.com/puppetlabs/stdlib>
-  * The module source code <http://j.mp/w00GZr> to get a listing of available
-    functions.
+* [stdlib](https://forge.puppet.com/puppetlabs/stdlib)
+  Version 4.19.0 or newer.
 
 ## Usage examples
 
 ### Install and manage the conntrackd service
 
 ```
-  class  { "conntrackd": }
+  include 'conntrackd'
 ```
 
 ### Multicast Sync over eth1 using the default FTFW sync mode:
 
 ```
-  class { "conntrackd::config":
-          protocol       => 'Multicast',
-          interface      => 'eth1',
-          ipv4_address   => ${multicast_address},
-          ipv4_interface => ${ipaddress_eth1},
+  class { 'conntrackd':
+    protocol       => 'Multicast',
+    interface      => 'eth1',
+    ipv4_address   => $multicast_address,
+    ipv4_interface => $facts['networking']['interfaces']['eth1']['ip'],
   }
 ```
 
 ### UDP Sync over eth2 using the ALARM sync mode:
 
 ```
-  class  { "conntrackd::config":
-          sync_mode      => 'ALARM',
-          protocol       => 'UDP',
-          interface      => 'eth2',
-          ipv4_address   => ${ipaddress_eth2},
-          udp_ipv4_dest  => ${other_remote_host},
+  class  { 'conntrackd':
+    sync_mode     => 'ALARM',
+    protocol      => 'UDP',
+    interface     => 'eth2',
+    ipv4_address  => $facts['networking']['interfaces']['eth2']['ip'],
+    udp_ipv4_dest => $other_remote_host,
   }
 ```
 
 ### Remove service, package and configuration of conntrackd:
 
 ```
-  class  { "conntrackd":
-          ensure         => 'absent'
+  class  { 'conntrackd':
+    ensure => 'absent',
   }
 ```
 
@@ -70,10 +65,13 @@ You can find more examples in the examples dir.
 ## Links
 
 * Official conntrackd website <http://conntrack-tools.netfilter.org/conntrackd.html>
-* Official project page <https://github.com/bisscuitt/puppet-module-conntrackd>
-* Official Puppet Style Guide <http://j.mp/fCVSng>
+* Official project page <https://github.com/voxpupuli/puppet-conntrackd>
 
 ## License, Copyright
 
 See COPYING and NOTICE file in the root directory of this module.
 
+## Author
+
+* Written initially by Ian Bissett <bisscuitt@gmail.com> @bisscuitt
+* This module is now maintained by [VoxPupuli](https://voxpupuli.org)
