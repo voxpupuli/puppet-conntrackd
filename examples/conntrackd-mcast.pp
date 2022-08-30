@@ -1,6 +1,6 @@
 # A simple Multicast configuration over eth1
 
-class { 'conntrackd::config':
+class { 'conntrackd':
   protocol       => 'Multicast',
   sync_mode      => 'FTFW',
   interface      => 'eth1',

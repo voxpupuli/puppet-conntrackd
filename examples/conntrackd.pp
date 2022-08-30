@@ -3,5 +3,5 @@
 # This will not manage the configuraiton file, useful if you want to manage configurations seperately.
 
 class { 'conntrackd':
-  ensure  => 'present',
+  ensure => 'present',
 }
