@@ -2,6 +2,15 @@
 
 Puppet module to manage conntrackd.
 
+[![Build Status](https://github.com/voxpupuli/puppet-conntrackd/workflows/CI/badge.svg)](https://github.com/voxpupuli/puppet-conntrackd/actions?query=workflow%3ACI)
+[![Release](https://github.com/voxpupuli/puppet-conntrackd/actions/workflows/release.yml/badge.svg)](https://github.com/voxpupuli/puppet-conntrackd/actions/workflows/release.yml)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/conntrackd.svg)](https://forge.puppetlabs.com/puppet/conntrackd)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/conntrackd.svg)](https://forge.puppetlabs.com/puppet/conntrackd)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/conntrackd.svg)](https://forge.puppetlabs.com/puppet/conntrackd)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/conntrackd.svg)](https://forge.puppetlabs.com/puppet/conntrackd)
+[![puppetmodule.info docs](http://www.puppetmodule.info/images/badge.png)](http://www.puppetmodule.info/m/puppet-conntrackd)
+[![Apache-2 License](https://img.shields.io/github/license/voxpupuli/puppet-conntrackd.svg)](LICENSE)
+
 Have a look at [`REFERENCE.md`](REFERENCE.md) or the main module class
 ([`init.pp`](manifests/init.pp)) to see what this module does on a node plus
 usage examples.
@@ -20,6 +29,9 @@ This module has the following dependencies:
 
 * [stdlib](https://forge.puppet.com/puppetlabs/stdlib)
   Version 4.19.0 or newer.
+
+For a full (and up-to-date) list of dependencies, please see
+[metadata.json](metadata.json).
 
 ## Usage examples
 

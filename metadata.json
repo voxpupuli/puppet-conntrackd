@@ -5,7 +5,7 @@
   "summary": "Manages conntrackd service",
   "license": "Apache-2.0",
   "source": "https://github.com/voxpupuli/puppet-conntrackd.git",
-  "project_page": "https://github.com/bisscuitt/puppet-module-conntrackd",
+  "project_page": "https://github.com/voxpupuli/puppet-conntrackd/",
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
