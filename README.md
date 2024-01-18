@@ -21,8 +21,6 @@ Supports both ipv4 and ipv6, all conntrackd options and all sync modes.
 
 Tested with Debian, Ubuntu and RedHat-compatible distros.
 
-This module is designed to work with Puppet version 4.10 or newer.
-
 See [`metadata.json`](metadata.json) for the full list of tested operating
 systems and Puppet versions.
 
