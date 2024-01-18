@@ -19,16 +19,16 @@ usage examples.
 
 Supports both ipv4 and ipv6, all conntrackd options and all sync modes.
 
-Compatible with Debian, Ubuntu and RedHat, Fedora, Centos, Scientific distros.
+Tested with Debian, Ubuntu and RedHat-compatible distros.
 
-This module is designed to work with Puppet version 4.10 or newer.
+See [`metadata.json`](metadata.json) for the full list of tested operating
+systems and Puppet versions.
 
 ## Requirements
 
 This module has the following dependencies:
 
 * [stdlib](https://forge.puppet.com/puppetlabs/stdlib)
-  Version 4.19.0 or newer.
 
 For a full (and up-to-date) list of dependencies, please see
 [metadata.json](metadata.json).
