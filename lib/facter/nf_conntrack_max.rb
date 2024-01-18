@@ -10,8 +10,8 @@ Facter.add('nf_conntrack_max') do
 
   setcode do
     File.read(f).chomp.to_i
-  rescue => exception
-    Facter.warn(exception)
+  rescue StandardError => e
+    Facter.warn(e)
     nil
   end
 end

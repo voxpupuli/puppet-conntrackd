@@ -11,11 +11,11 @@ describe 'conntrackd::service' do
         let(:pre_condition) { 'include conntrackd' }
 
         it { is_expected.to compile }
-        
+
         it do
-          is_expected.to contain_service('conntrackd')
-            .with_ensure('running')
-            .with_enable(true)
+          is_expected.to contain_service('conntrackd').
+            with_ensure('running').
+            with_enable(true)
         end
       end
 
@@ -29,11 +29,11 @@ describe 'conntrackd::service' do
         end
 
         it { is_expected.to compile }
-        
+
         it do
-          is_expected.to contain_service('conntrackd')
-            .with_ensure('stopped')
-            .with_enable(false)
+          is_expected.to contain_service('conntrackd').
+            with_ensure('stopped').
+            with_enable(false)
         end
       end
     end
