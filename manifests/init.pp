@@ -378,7 +378,7 @@ class conntrackd (
   if $hashlimit {
     $_hashlimit = $hashlimit
   } elsif $facts['nf_conntrack_max'] {
-    $_hashlimit = ($facts['nf_conntrack_max'] + 0) * 2
+    $_hashlimit = $facts['nf_conntrack_max'] * 2
   } else {
     $_hashlimit = 131072
   }
