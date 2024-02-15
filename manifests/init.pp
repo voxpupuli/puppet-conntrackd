@@ -75,10 +75,6 @@
 #   string:  fully qualified path to the UNIX socket used for configuration
 #   Default: <tt>/var/run/conntrackd.ctl</tt>
 #
-# @param sock_backlog
-#   integer: sets the blacklog ofr the UNIX socket
-#   Default: <tt>20</tt>
-#
 # @param ignore_ips_ipv4
 #   array:   list of IPv4 addresses to ignore.
 #            should include this node's address
@@ -317,7 +313,6 @@ class conntrackd (
   String                           $syslog,
   String                           $lockfile,
   String                           $sock_path,
-  Integer                          $sock_backlog,
   Array                            $ignore_ips_ipv4,
   Array                            $ignore_ips_ipv6,
   Array                            $tcp_flows,

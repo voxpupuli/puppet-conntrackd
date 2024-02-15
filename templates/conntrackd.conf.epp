@@ -62,7 +62,6 @@ General {
 
 	UNIX {
 		Path <%= $conntrackd::config::sock_path %>
-		Backlog <%= $conntrackd::config::sock_backlog %>
 	}
 
 	NetlinkBufferSize <%= $conntrackd::config::netlinkbuffersize %>

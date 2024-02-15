@@ -68,7 +68,6 @@ The following parameters are available in the `conntrackd` class:
 * [`syslog`](#-conntrackd--syslog)
 * [`lockfile`](#-conntrackd--lockfile)
 * [`sock_path`](#-conntrackd--sock_path)
-* [`sock_backlog`](#-conntrackd--sock_backlog)
 * [`ignore_ips_ipv4`](#-conntrackd--ignore_ips_ipv4)
 * [`ignore_ips_ipv6`](#-conntrackd--ignore_ips_ipv6)
 * [`tcp_flows`](#-conntrackd--tcp_flows)
@@ -252,13 +251,6 @@ Data type: `String`
 
 string:  fully qualified path to the UNIX socket used for configuration
 Default: <tt>/var/run/conntrackd.ctl</tt>
-
-##### <a name="-conntrackd--sock_backlog"></a>`sock_backlog`
-
-Data type: `Integer`
-
-integer: sets the blacklog ofr the UNIX socket
-Default: <tt>20</tt>
 
 ##### <a name="-conntrackd--ignore_ips_ipv4"></a>`ignore_ips_ipv4`
 
@@ -592,7 +584,6 @@ The following parameters are available in the `conntrackd::config` class:
 * [`syslog`](#-conntrackd--config--syslog)
 * [`lockfile`](#-conntrackd--config--lockfile)
 * [`sock_path`](#-conntrackd--config--sock_path)
-* [`sock_backlog`](#-conntrackd--config--sock_backlog)
 * [`ignore_ips_ipv4`](#-conntrackd--config--ignore_ips_ipv4)
 * [`ignore_ips_ipv6`](#-conntrackd--config--ignore_ips_ipv6)
 * [`tcp_flows`](#-conntrackd--config--tcp_flows)
@@ -698,15 +689,6 @@ string:  fully qualified path to the UNIX socket used for configuration
 Default: <tt>/var/run/conntrackd.ctl</tt>
 
 Default value: `$conntrackd::sock_path`
-
-##### <a name="-conntrackd--config--sock_backlog"></a>`sock_backlog`
-
-Data type: `Integer`
-
-integer: sets the blacklog ofr the UNIX socket
-Default: <tt>20</tt>
-
-Default value: `$conntrackd::sock_backlog`
 
 ##### <a name="-conntrackd--config--ignore_ips_ipv4"></a>`ignore_ips_ipv4`
 

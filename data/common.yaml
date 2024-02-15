@@ -26,7 +26,6 @@ conntrackd::logfile: 'off'
 conntrackd::syslog: 'on'
 conntrackd::lockfile: '/var/lock/conntrack.lock'
 conntrackd::sock_path: '/var/run/conntrackd.ctl'
-conntrackd::sock_backlog: 20
 conntrackd::ignore_ips_ipv4:
   - '127.0.0.1'
   - '192.168.0.1'
