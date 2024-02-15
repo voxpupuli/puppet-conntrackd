@@ -21,7 +21,6 @@ conntrackd::config_dir: '/etc/conntrackd'
 conntrackd::config_filename: 'conntrackd.conf'
 
 # Configuration file parameters
-conntrackd::nice: -1
 conntrackd::hashsize: 32768
 conntrackd::logfile: 'off'
 conntrackd::syslog: 'on'

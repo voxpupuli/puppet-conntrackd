@@ -63,7 +63,6 @@ The following parameters are available in the `conntrackd` class:
 * [`service_status`](#-conntrackd--service_status)
 * [`config_dir`](#-conntrackd--config_dir)
 * [`config_filename`](#-conntrackd--config_filename)
-* [`nice`](#-conntrackd--nice)
 * [`hashsize`](#-conntrackd--hashsize)
 * [`logfile`](#-conntrackd--logfile)
 * [`syslog`](#-conntrackd--syslog)
@@ -215,14 +214,6 @@ Top-level directory for configuration
 Data type: `String`
 
 Config file name
-
-##### <a name="-conntrackd--nice"></a>`nice`
-
-Data type: `Integer[-20,19]`
-
-integer: Nice value of the conntrackd process
-range: <tt>-19</tt> to <tt>+19</tt>
-Default: <tt>-1</tt>
 
 ##### <a name="-conntrackd--hashsize"></a>`hashsize`
 
@@ -595,7 +586,6 @@ Default value: `undef`
 The following parameters are available in the `conntrackd::config` class:
 
 * [`ensure`](#-conntrackd--config--ensure)
-* [`nice`](#-conntrackd--config--nice)
 * [`hashsize`](#-conntrackd--config--hashsize)
 * [`hashlimit`](#-conntrackd--config--hashlimit)
 * [`logfile`](#-conntrackd--config--logfile)
@@ -651,16 +641,6 @@ String. Controls if the managed resources shall be <tt>present</tt> or
 Default: <tt>present</tt>.
 
 Default value: `$conntrackd::ensure`
-
-##### <a name="-conntrackd--config--nice"></a>`nice`
-
-Data type: `Integer[-20,19]`
-
-integer: Nice value of the conntrackd process
-range: <tt>-19</tt> to <tt>+19</tt>
-Default: <tt>-1</tt>
-
-Default value: `$conntrackd::nice`
 
 ##### <a name="-conntrackd--config--hashsize"></a>`hashsize`
 

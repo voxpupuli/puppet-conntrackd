@@ -7,11 +7,6 @@
 #   <tt>absent</tt>.
 #   Default: <tt>present</tt>.
 #
-# @param nice
-#   integer: Nice value of the conntrackd process
-#   range: <tt>-19</tt> to <tt>+19</tt>
-#   Default: <tt>-1</tt>
-#
 # @param hashsize
 #   integer: Number of buckets in the cache hashtable.
 #   Default: <tt>32768</tt>
@@ -242,7 +237,6 @@
 class conntrackd::config (
   Enum['present', 'absent']        $ensure                     = $conntrackd::ensure,
   Enum['Multicast', 'UDP']         $protocol                   = $conntrackd::protocol,
-  Integer[-20,19]                  $nice                       = $conntrackd::nice,
   Integer                          $hashsize                   = $conntrackd::hashsize,
   Integer                          $hashlimit                  = $conntrackd::_hashlimit,
   String                           $logfile                    = $conntrackd::logfile,

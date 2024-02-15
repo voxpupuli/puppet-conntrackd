@@ -52,11 +52,6 @@
 # @param config_dir Top-level directory for configuration
 # @param config_filename Config file name
 #
-# @param nice
-#   integer: Nice value of the conntrackd process
-#   range: <tt>-19</tt> to <tt>+19</tt>
-#   Default: <tt>-1</tt>
-#
 # @param hashsize
 #   integer: Number of buckets in the cache hashtable.
 #   Default: <tt>32768</tt>
@@ -317,7 +312,6 @@ class conntrackd (
   String                           $service_status,
   String                           $config_dir,
   String                           $config_filename,
-  Integer[-20,19]                  $nice,
   Integer                          $hashsize,
   String                           $logfile,
   String                           $syslog,
