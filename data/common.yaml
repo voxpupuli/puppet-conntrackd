@@ -52,7 +52,7 @@ conntrackd::disable_external_cache: 'Off'
 conntrackd::disable_internal_cache: 'Off'
 conntrackd::refresh_time: 15
 conntrackd::cache_timeout: 180
-conntrackd::commit_timeout: 180
+conntrackd::commit_timeout: ~
 conntrackd::purge_timeout: 60
 
 conntrackd::protocol: 'Multicast'

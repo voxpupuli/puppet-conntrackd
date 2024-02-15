@@ -144,6 +144,7 @@
 #   boolean: This clause allows you to disable the external cache. Thus,
 #            the state entries are directly injected into the kernel
 #            conntrack table.
+#   values:  one of: <tt>On</tt>, <tt>Off</tt>
 #   Default: <tt>Off</tt>
 #
 # @param disable_internal_cache
@@ -165,7 +166,7 @@
 #   integer: This parameter allows you to set an initial fixed timeout
 #            for the committed entries when this node goes from backup
 #            to primary.
-#   Default: <tt>180</tt>
+#   Default: <tt>undef</tt>
 #
 # @param purge_timeout
 #   integer: If the firewall replica goes from primary to backup,
@@ -327,11 +328,11 @@ class conntrackd (
   Enum['FTFW', 'NOTRACK', 'ALARM'] $sync_mode,
   Integer                          $resend_queue_size,
   Integer                          $ack_window_size,
-  String                           $disable_external_cache,
+  Enum['On','Off']                 $disable_external_cache,
   String                           $disable_internal_cache,
   Integer                          $refresh_time,
   Integer                          $cache_timeout,
-  Integer                          $commit_timeout,
+  Optional[Integer]                $commit_timeout,
   Integer                          $purge_timeout,
 
   Enum['Multicast', 'UDP']         $protocol,
