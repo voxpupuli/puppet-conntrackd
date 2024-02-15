@@ -101,6 +101,7 @@ The following parameters are available in the `conntrackd` class:
 * [`udp_ipv6_dest`](#-conntrackd--udp_ipv6_dest)
 * [`udp_port`](#-conntrackd--udp_port)
 * [`filter_accept_protocols`](#-conntrackd--filter_accept_protocols)
+* [`filter_from`](#-conntrackd--filter_from)
 * [`tcp_window_tracking`](#-conntrackd--tcp_window_tracking)
 * [`track_tcp_states`](#-conntrackd--track_tcp_states)
 * [`scheduler_type`](#-conntrackd--scheduler_type)
@@ -520,6 +521,14 @@ values:  <tt>TCP</tt>, <tt>SCTP</tt>, <tt>DCCP</tt>,
          <tt>UDP</tt>, <tt>ICMP</tt>, <tt>IPv6-ICMP</tt>
 Default: <tt>[ 'TCP', 'SCTP', 'DCCP' ]</tt>
 
+##### <a name="-conntrackd--filter_from"></a>`filter_from`
+
+Data type: `Enum['Kernelspace','Userspace']`
+
+String Where the filtering occurs
+values:  <tt>Kernelspace</tt>, <tt>Userspace</tt>
+Default: <tt>Userspace</tt>
+
 ##### <a name="-conntrackd--tcp_window_tracking"></a>`tcp_window_tracking`
 
 Data type: `String`
@@ -634,6 +643,7 @@ The following parameters are available in the `conntrackd::config` class:
 * [`udp_ipv6_dest`](#-conntrackd--config--udp_ipv6_dest)
 * [`udp_port`](#-conntrackd--config--udp_port)
 * [`filter_accept_protocols`](#-conntrackd--config--filter_accept_protocols)
+* [`filter_from`](#-conntrackd--config--filter_from)
 * [`tcp_window_tracking`](#-conntrackd--config--tcp_window_tracking)
 * [`track_tcp_states`](#-conntrackd--config--track_tcp_states)
 * [`scheduler_type`](#-conntrackd--config--scheduler_type)
@@ -1040,6 +1050,16 @@ values:  <tt>TCP</tt>, <tt>SCTP</tt>, <tt>DCCP</tt>,
 Default: <tt>[ 'TCP', 'SCTP', 'DCCP' ]</tt>
 
 Default value: `$conntrackd::filter_accept_protocols`
+
+##### <a name="-conntrackd--config--filter_from"></a>`filter_from`
+
+Data type: `Enum['Kernelspace','Userspace']`
+
+String Where the filtering occurs
+values:  <tt>Kernelspace</tt>, <tt>Userspace</tt>
+Default: <tt>Userspace</tt>
+
+Default value: `$conntrackd::filter_from`
 
 ##### <a name="-conntrackd--config--tcp_window_tracking"></a>`tcp_window_tracking`
 
