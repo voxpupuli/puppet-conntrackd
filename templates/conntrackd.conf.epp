@@ -73,7 +73,7 @@ General {
 <% } -%>
 	EventIterationLimit <%= $conntrackd::config::eventiterationlimit %>
 
-	Filter From Userspace {
+	Filter From <%= $conntrackd::config::filter_from %> {
 		Protocol Accept {
 <% $conntrackd::config::filter_accept_protocols.each |$proto| { -%>
                     <%= $proto %>

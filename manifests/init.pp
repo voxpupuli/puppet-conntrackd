@@ -233,6 +233,11 @@
 #            <tt>UDP</tt>, <tt>ICMP</tt>, <tt>IPv6-ICMP</tt>
 #   Default: <tt>[ 'TCP', 'SCTP', 'DCCP' ]</tt>
 #
+# @param filter_from
+#   String Where the filtering occurs
+#   values:  <tt>Kernelspace</tt>, <tt>Userspace</tt>
+#   Default: <tt>Userspace</tt>
+#
 # @param tcp_window_tracking
 #   boolean: TCP state-entries have window tracking disabled by default,
 #            you can enable it with this option.
@@ -348,6 +353,7 @@ class conntrackd (
   Integer                          $udp_port,
 
   Array                            $filter_accept_protocols,
+  Enum['Kernelspace','Userspace']  $filter_from,
 
   String                           $tcp_window_tracking,
   Array                            $track_tcp_states,

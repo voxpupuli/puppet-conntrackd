@@ -70,6 +70,8 @@ conntrackd::filter_accept_protocols:
   - 'TCP'
   - 'SCTP'
   - 'DCCP'
+conntrackd::filter_from: 'Userspace'
+
 
 conntrackd::tcp_window_tracking: 'Off'
 conntrackd::track_tcp_states:
