@@ -48,7 +48,6 @@ Sync {
 }
 
 General {
-	Nice <%= $conntrackd::config::nice %>
 
 	Scheduler {
 		Type <%= $conntrackd::config::scheduler_type %>
@@ -63,7 +62,6 @@ General {
 
 	UNIX {
 		Path <%= $conntrackd::config::sock_path %>
-		Backlog <%= $conntrackd::config::sock_backlog %>
 	}
 
 	NetlinkBufferSize <%= $conntrackd::config::netlinkbuffersize %>

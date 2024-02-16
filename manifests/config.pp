@@ -7,11 +7,6 @@
 #   <tt>absent</tt>.
 #   Default: <tt>present</tt>.
 #
-# @param nice
-#   integer: Nice value of the conntrackd process
-#   range: <tt>-19</tt> to <tt>+19</tt>
-#   Default: <tt>-1</tt>
-#
 # @param hashsize
 #   integer: Number of buckets in the cache hashtable.
 #   Default: <tt>32768</tt>
@@ -38,10 +33,6 @@
 # @param sock_path
 #   string:  fully qualified path to the UNIX socket used for configuration
 #   Default: <tt>/var/run/conntrackd.ctl</tt>
-#
-# @param sock_backlog
-#   integer: sets the blacklog ofr the UNIX socket
-#   Default: <tt>20</tt>
 #
 # @param ignore_ips_ipv4
 #   array:   list of IPv4 addresses to ignore.
@@ -242,14 +233,12 @@
 class conntrackd::config (
   Enum['present', 'absent']        $ensure                     = $conntrackd::ensure,
   Enum['Multicast', 'UDP']         $protocol                   = $conntrackd::protocol,
-  Integer[-20,19]                  $nice                       = $conntrackd::nice,
   Integer                          $hashsize                   = $conntrackd::hashsize,
   Integer                          $hashlimit                  = $conntrackd::_hashlimit,
   String                           $logfile                    = $conntrackd::logfile,
   String                           $syslog                     = $conntrackd::syslog,
   String                           $lockfile                   = $conntrackd::lockfile,
   String                           $sock_path                  = $conntrackd::sock_path,
-  Integer                          $sock_backlog               = $conntrackd::sock_backlog,
   Array                            $ignore_ips_ipv4            = $conntrackd::ignore_ips_ipv4,
   Array                            $ignore_ips_ipv6            = $conntrackd::ignore_ips_ipv6,
   Array                            $tcp_flows                  = $conntrackd::tcp_flows,

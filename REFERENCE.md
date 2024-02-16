@@ -63,13 +63,11 @@ The following parameters are available in the `conntrackd` class:
 * [`service_status`](#-conntrackd--service_status)
 * [`config_dir`](#-conntrackd--config_dir)
 * [`config_filename`](#-conntrackd--config_filename)
-* [`nice`](#-conntrackd--nice)
 * [`hashsize`](#-conntrackd--hashsize)
 * [`logfile`](#-conntrackd--logfile)
 * [`syslog`](#-conntrackd--syslog)
 * [`lockfile`](#-conntrackd--lockfile)
 * [`sock_path`](#-conntrackd--sock_path)
-* [`sock_backlog`](#-conntrackd--sock_backlog)
 * [`ignore_ips_ipv4`](#-conntrackd--ignore_ips_ipv4)
 * [`ignore_ips_ipv6`](#-conntrackd--ignore_ips_ipv6)
 * [`tcp_flows`](#-conntrackd--tcp_flows)
@@ -216,14 +214,6 @@ Data type: `String`
 
 Config file name
 
-##### <a name="-conntrackd--nice"></a>`nice`
-
-Data type: `Integer[-20,19]`
-
-integer: Nice value of the conntrackd process
-range: <tt>-19</tt> to <tt>+19</tt>
-Default: <tt>-1</tt>
-
 ##### <a name="-conntrackd--hashsize"></a>`hashsize`
 
 Data type: `Integer`
@@ -261,13 +251,6 @@ Data type: `String`
 
 string:  fully qualified path to the UNIX socket used for configuration
 Default: <tt>/var/run/conntrackd.ctl</tt>
-
-##### <a name="-conntrackd--sock_backlog"></a>`sock_backlog`
-
-Data type: `Integer`
-
-integer: sets the blacklog ofr the UNIX socket
-Default: <tt>20</tt>
 
 ##### <a name="-conntrackd--ignore_ips_ipv4"></a>`ignore_ips_ipv4`
 
@@ -595,14 +578,12 @@ Default value: `undef`
 The following parameters are available in the `conntrackd::config` class:
 
 * [`ensure`](#-conntrackd--config--ensure)
-* [`nice`](#-conntrackd--config--nice)
 * [`hashsize`](#-conntrackd--config--hashsize)
 * [`hashlimit`](#-conntrackd--config--hashlimit)
 * [`logfile`](#-conntrackd--config--logfile)
 * [`syslog`](#-conntrackd--config--syslog)
 * [`lockfile`](#-conntrackd--config--lockfile)
 * [`sock_path`](#-conntrackd--config--sock_path)
-* [`sock_backlog`](#-conntrackd--config--sock_backlog)
 * [`ignore_ips_ipv4`](#-conntrackd--config--ignore_ips_ipv4)
 * [`ignore_ips_ipv6`](#-conntrackd--config--ignore_ips_ipv6)
 * [`tcp_flows`](#-conntrackd--config--tcp_flows)
@@ -651,16 +632,6 @@ String. Controls if the managed resources shall be <tt>present</tt> or
 Default: <tt>present</tt>.
 
 Default value: `$conntrackd::ensure`
-
-##### <a name="-conntrackd--config--nice"></a>`nice`
-
-Data type: `Integer[-20,19]`
-
-integer: Nice value of the conntrackd process
-range: <tt>-19</tt> to <tt>+19</tt>
-Default: <tt>-1</tt>
-
-Default value: `$conntrackd::nice`
 
 ##### <a name="-conntrackd--config--hashsize"></a>`hashsize`
 
@@ -718,15 +689,6 @@ string:  fully qualified path to the UNIX socket used for configuration
 Default: <tt>/var/run/conntrackd.ctl</tt>
 
 Default value: `$conntrackd::sock_path`
-
-##### <a name="-conntrackd--config--sock_backlog"></a>`sock_backlog`
-
-Data type: `Integer`
-
-integer: sets the blacklog ofr the UNIX socket
-Default: <tt>20</tt>
-
-Default value: `$conntrackd::sock_backlog`
 
 ##### <a name="-conntrackd--config--ignore_ips_ipv4"></a>`ignore_ips_ipv4`
 
