@@ -174,6 +174,12 @@
 #            This command schedules a flush of the table in N seconds.
 #   Default: <tt>60</tt>
 #
+# @param systemd
+#   String to Enable/Disable systemd support. Possible values:
+#   * <tt>On</tt>: Enable systemd support
+#   * <tt>Off</tt>: Disable systemd support
+#   Defaults to <tt>undef</tt>.
+#
 # @param protocol
 #   string:  The protocol to use for syncing.
 #   values:  <tt>Multicast</tt> or <tt>UDP</tt>
@@ -339,6 +345,7 @@ class conntrackd (
   Integer                          $cache_timeout,
   Optional[Integer]                $commit_timeout,
   Integer                          $purge_timeout,
+  Optional[Enum['On','Off']]       $systemd,
 
   Enum['Multicast', 'UDP']         $protocol,
   String                           $interface,
