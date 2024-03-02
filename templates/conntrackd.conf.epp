@@ -11,7 +11,9 @@ Sync {
         RefreshTime <%= $conntrackd::config::refresh_time %>
         CacheTimeout <%= $conntrackd::config::cache_timeout %>
 <% } -%>
+<% if $conntrackd::config::commit_timeout { -%>
 		CommitTimeout <%= $conntrackd::config::commit_timeout %>
+<% } -%>
 		PurgeTimeout <%= $conntrackd::config::purge_timeout %>
 	}
 
