@@ -1,6 +1,6 @@
 {
   "name": "puppet-conntrackd",
-  "version": "3.0.1-rc0",
+  "version": "3.0.1",
   "author": "Vox Pupuli",
   "summary": "Manages conntrackd service",
   "license": "Apache-2.0",

@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.0.1](https://github.com/voxpupuli/puppet-conntrackd/tree/v3.0.1) (2024-03-06)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-conntrackd/compare/v3.0.0...v3.0.1)
+
+**Breaking changes:**
+
+- Quickfix: look for  antagonist parameters [\#27](https://github.com/voxpupuli/puppet-conntrackd/pull/27) ([JGodin-C2C](https://github.com/JGodin-C2C))
+- Deprecation: Drop nice and sock\_backlog options that are deprecated in conntrackd [\#24](https://github.com/voxpupuli/puppet-conntrackd/pull/24) ([JGodin-C2C](https://github.com/JGodin-C2C))
+
+**Merged pull requests:**
+
+- Feature: add filter\_from configuration [\#26](https://github.com/voxpupuli/puppet-conntrackd/pull/26) ([JGodin-C2C](https://github.com/JGodin-C2C))
+- feature: add support for systemd option [\#25](https://github.com/voxpupuli/puppet-conntrackd/pull/25) ([JGodin-C2C](https://github.com/JGodin-C2C))
+
 ## [v3.0.0](https://github.com/voxpupuli/puppet-conntrackd/tree/v3.0.0) (2024-01-18)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-conntrackd/compare/v2.0.0...v3.0.0)
