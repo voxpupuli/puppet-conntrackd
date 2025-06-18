@@ -16,6 +16,10 @@
 * `conntrackd::package`: This class exists to coordinate all software package management related
 * `conntrackd::service`: This class exists to coordinate all service management related actions,
 
+### Data types
+
+* [`Conntrackd::Exp_sync`](#Conntrackd--Exp_sync): Type for the config option ExpectationSync
+
 ## Classes
 
 ### <a name="conntrackd"></a>`conntrackd`
@@ -102,6 +106,7 @@ The following parameters are available in the `conntrackd` class:
 * [`filter_accept_protocols`](#-conntrackd--filter_accept_protocols)
 * [`filter_from`](#-conntrackd--filter_from)
 * [`tcp_window_tracking`](#-conntrackd--tcp_window_tracking)
+* [`expectation_sync`](#-conntrackd--expectation_sync)
 * [`track_tcp_states`](#-conntrackd--track_tcp_states)
 * [`scheduler_type`](#-conntrackd--scheduler_type)
 * [`scheduler_priority`](#-conntrackd--scheduler_priority)
@@ -531,6 +536,14 @@ boolean: TCP state-entries have window tracking disabled by default,
          you can enable it with this option.
 Default: <tt>Off</tt>
 
+##### <a name="-conntrackd--expectation_sync"></a>`expectation_sync`
+
+Data type: `Optional[Conntrackd::Exp_sync]`
+
+on: enable the synchronization of expectations
+array: enable sync on specified expectations
+Default: undef
+
 ##### <a name="-conntrackd--track_tcp_states"></a>`track_tcp_states`
 
 Data type: `Array`
@@ -638,6 +651,7 @@ The following parameters are available in the `conntrackd::config` class:
 * [`filter_accept_protocols`](#-conntrackd--config--filter_accept_protocols)
 * [`filter_from`](#-conntrackd--config--filter_from)
 * [`tcp_window_tracking`](#-conntrackd--config--tcp_window_tracking)
+* [`expectation_sync`](#-conntrackd--config--expectation_sync)
 * [`track_tcp_states`](#-conntrackd--config--track_tcp_states)
 * [`scheduler_type`](#-conntrackd--config--scheduler_type)
 * [`scheduler_priority`](#-conntrackd--config--scheduler_priority)
@@ -1058,6 +1072,16 @@ Default: <tt>Off</tt>
 
 Default value: `$conntrackd::tcp_window_tracking`
 
+##### <a name="-conntrackd--config--expectation_sync"></a>`expectation_sync`
+
+Data type: `Optional[Conntrackd::Exp_sync]`
+
+on: enable the synchronization of expectations
+array: enable sync on specified expectations
+Default: undef
+
+Default value: `$conntrackd::expectation_sync`
+
 ##### <a name="-conntrackd--config--track_tcp_states"></a>`track_tcp_states`
 
 Data type: `Array`
@@ -1118,4 +1142,12 @@ string:  enable syslog logging of statistics
 values:  <tt>on</tt>, <tt>off</tt> or <tt><syslog facility></tt>
 
 Default value: `$conntrackd::stats_syslog`
+
+## Data types
+
+### <a name="Conntrackd--Exp_sync"></a>`Conntrackd::Exp_sync`
+
+Type for the config option ExpectationSync
+
+Alias of `Variant[Enum['on'], Array[String[1]]]`
 

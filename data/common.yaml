@@ -75,6 +75,7 @@ conntrackd::filter_from: 'Userspace'
 
 
 conntrackd::tcp_window_tracking: 'Off'
+conntrackd::expectation_sync: ~
 conntrackd::track_tcp_states:
   - 'ESTABLISHED'
   - 'CLOSED'

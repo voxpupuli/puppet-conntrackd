@@ -46,6 +46,11 @@ Sync {
 
 	Options {
 		TCPWindowTracking <%= $conntrackd::config::tcp_window_tracking %>
+             <%- if $conntrackd::config::expectation_sync =~ Array { -%>
+                ExpectationSync { <%= $conntrackd::config::expectation_sync.join(' ') %> }
+             <%- } elsif $conntrackd::config::expectation_sync =~ String { -%>
+                ExpectationSync <%= $conntrackd::config::expectation_sync %>
+             <%- } -%>
 	}
 }
 

@@ -250,6 +250,11 @@
 #            you can enable it with this option.
 #   Default: <tt>Off</tt>
 #
+# @param expectation_sync
+#   on: enable the synchronization of expectations
+#   array: enable sync on specified expectations 
+#   Default: undef
+#
 # @param track_tcp_states
 #   array:   The specific TCP states to sync
 #   Default: <tt>[ 'ESTABLISHED', 'CLOSED', 'TIME_WAIT', 'CLOSE_WAIT' ]</tt>
@@ -364,6 +369,7 @@ class conntrackd (
   Enum['Kernelspace','Userspace']  $filter_from,
 
   String                           $tcp_window_tracking,
+  Optional[Conntrackd::Exp_sync]   $expectation_sync,
   Array                            $track_tcp_states,
 
   String                           $scheduler_type,
