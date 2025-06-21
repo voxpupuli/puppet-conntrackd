@@ -4,9 +4,15 @@ Sync {
 		ResendQueueSize <%= $conntrackd::config::resend_queue_size %>
 		ACKWindowSize <%= $conntrackd::config::ack_window_size %>
 		DisableExternalCache <%= $conntrackd::config::disable_external_cache %>
+              <%- if $conntrackd::config::startup_resync { -%>
+                StartupResync <%= $conntrackd::config::startup_resync %>
+              <%- } -%>
 <% } elsif $conntrackd::config::sync_mode == 'NOTRACK' { -%>
 		DisableInternalCache <%= $conntrackd::config::disable_internal_cache %>
 		DisableExternalCache <%= $conntrackd::config::disable_external_cache %>
+              <%- if $conntrackd::config::startup_resync { -%>
+                StartupResync <%= $conntrackd::config::startup_resync %>
+              <%- } -%>
 <% } elsif $conntrackd::config::sync_mode == 'ALARM' { -%>
         RefreshTime <%= $conntrackd::config::refresh_time %>
         CacheTimeout <%= $conntrackd::config::cache_timeout %>

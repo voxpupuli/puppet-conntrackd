@@ -128,6 +128,11 @@
 #            to primary.
 #   Default: <tt>undef</tt>
 #
+# @param startup_resync
+#   boolean: Order conntrackd to request a complete conntrack
+#            table resync against the other node at startup.
+#   Default: <tt>undef</tt>
+#
 # @param purge_timeout
 #   integer: If the firewall replica goes from primary to backup,
 #            the conntrackd -t command is invoked in the script.
@@ -274,6 +279,7 @@ class conntrackd::config (
   Integer                          $refresh_time               = $conntrackd::refresh_time,
   Integer                          $cache_timeout              = $conntrackd::cache_timeout,
   Optional[Integer]                $commit_timeout             = $conntrackd::commit_timeout,
+  Optional[Enum['yes','no']]       $startup_resync             = $conntrackd::startup_resync,
   Integer                          $purge_timeout              = $conntrackd::purge_timeout,
   Optional[Enum['On','Off']]       $systemd                    = $conntrackd::systemd,
   String                           $interface                  = $conntrackd::interface,

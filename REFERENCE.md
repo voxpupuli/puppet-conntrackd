@@ -89,6 +89,7 @@ The following parameters are available in the `conntrackd` class:
 * [`refresh_time`](#-conntrackd--refresh_time)
 * [`cache_timeout`](#-conntrackd--cache_timeout)
 * [`commit_timeout`](#-conntrackd--commit_timeout)
+* [`startup_resync`](#-conntrackd--startup_resync)
 * [`purge_timeout`](#-conntrackd--purge_timeout)
 * [`systemd`](#-conntrackd--systemd)
 * [`protocol`](#-conntrackd--protocol)
@@ -403,6 +404,14 @@ integer: This parameter allows you to set an initial fixed timeout
          to primary.
 Default: <tt>undef</tt>
 
+##### <a name="-conntrackd--startup_resync"></a>`startup_resync`
+
+Data type: `Optional[Enum['yes','no']]`
+
+boolean: Order conntrackd to request a complete conntrack
+         table resync against the other node at startup.
+Default: <tt>undef</tt>
+
 ##### <a name="-conntrackd--purge_timeout"></a>`purge_timeout`
 
 Data type: `Integer`
@@ -634,6 +643,7 @@ The following parameters are available in the `conntrackd::config` class:
 * [`refresh_time`](#-conntrackd--config--refresh_time)
 * [`cache_timeout`](#-conntrackd--config--cache_timeout)
 * [`commit_timeout`](#-conntrackd--config--commit_timeout)
+* [`startup_resync`](#-conntrackd--config--startup_resync)
 * [`purge_timeout`](#-conntrackd--config--purge_timeout)
 * [`systemd`](#-conntrackd--config--systemd)
 * [`protocol`](#-conntrackd--config--protocol)
@@ -904,6 +914,16 @@ integer: This parameter allows you to set an initial fixed timeout
 Default: <tt>undef</tt>
 
 Default value: `$conntrackd::commit_timeout`
+
+##### <a name="-conntrackd--config--startup_resync"></a>`startup_resync`
+
+Data type: `Optional[Enum['yes','no']]`
+
+boolean: Order conntrackd to request a complete conntrack
+         table resync against the other node at startup.
+Default: <tt>undef</tt>
+
+Default value: `$conntrackd::startup_resync`
 
 ##### <a name="-conntrackd--config--purge_timeout"></a>`purge_timeout`
 

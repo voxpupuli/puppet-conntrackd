@@ -55,6 +55,7 @@ conntrackd::refresh_time: 15
 conntrackd::cache_timeout: 180
 conntrackd::commit_timeout: ~
 conntrackd::purge_timeout: 60
+conntrackd::startup_resync: ~
 
 conntrackd::protocol: 'Multicast'
 conntrackd::ipv4_address: '225.0.0.50'
