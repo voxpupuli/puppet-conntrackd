@@ -87,10 +87,10 @@ General {
 
 		Address Ignore {
 <% $conntrackd::config::ignore_ips_ipv4.each |$address| { -%>
-			IPv4_address <%= $address %>
+			<% if $address != '' { %>IPv4_address <%= $address %><% } %>
 <% } -%>
 <% $conntrackd::config::ignore_ips_ipv6.each |$address| { -%>
-			IPv6_address <%= $address %>
+			<% if $address != '' { %>IPv6_address <%= $address %><% } %>
 <% } -%>
 		}
 		State Accept {
