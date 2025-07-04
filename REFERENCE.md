@@ -551,7 +551,7 @@ Data type: `Optional[Conntrackd::Exp_sync]`
 
 on: enable the synchronization of expectations
 array: enable sync on specified expectations
-Default: undef
+Default: <tt>undef</tt>
 
 ##### <a name="-conntrackd--track_tcp_states"></a>`track_tcp_states`
 
@@ -1098,7 +1098,7 @@ Data type: `Optional[Conntrackd::Exp_sync]`
 
 on: enable the synchronization of expectations
 array: enable sync on specified expectations
-Default: undef
+Default: <tt>undef</tt>
 
 Default value: `$conntrackd::expectation_sync`
 

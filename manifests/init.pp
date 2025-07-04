@@ -258,7 +258,7 @@
 # @param expectation_sync
 #   on: enable the synchronization of expectations
 #   array: enable sync on specified expectations 
-#   Default: undef
+#   Default: <tt>undef</tt>
 #
 # @param track_tcp_states
 #   array:   The specific TCP states to sync
