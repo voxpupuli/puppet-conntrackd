@@ -169,9 +169,8 @@
 #   Default: <tt>undef</tt>
 #
 # @param startup_resync
-#   boolean: Order conntrackd to request a complete conntrack
-#            table resync against the other node at startup.
-#   Default: <tt>undef</tt>
+#   If conntrackd should request a complete conntrack
+#   table resync against the other node at startup.
 #
 # @param purge_timeout
 #   integer: If the firewall replica goes from primary to backup,
@@ -258,7 +257,6 @@
 # @param expectation_sync
 #   on: enable the synchronization of expectations
 #   array: enable sync on specified expectations 
-#   Default: <tt>undef</tt>
 #
 # @param track_tcp_states
 #   array:   The specific TCP states to sync
@@ -354,7 +352,7 @@ class conntrackd (
   Integer                          $refresh_time,
   Integer                          $cache_timeout,
   Optional[Integer]                $commit_timeout,
-  Optional[Enum['yes','no']]       $startup_resync,
+  Optional[Enum['yes','no']]       $startup_resync = undef,
   Integer                          $purge_timeout,
   Optional[Enum['On','Off']]       $systemd,
 
@@ -375,7 +373,7 @@ class conntrackd (
   Enum['Kernelspace','Userspace']  $filter_from,
 
   String                           $tcp_window_tracking,
-  Optional[Conntrackd::Exp_sync]   $expectation_sync,
+  Optional[Conntrackd::Exp_sync]   $expectation_sync = undef,
   Array                            $track_tcp_states,
 
   String                           $scheduler_type,

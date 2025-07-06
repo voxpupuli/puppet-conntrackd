@@ -408,9 +408,10 @@ Default: <tt>undef</tt>
 
 Data type: `Optional[Enum['yes','no']]`
 
-boolean: Order conntrackd to request a complete conntrack
-         table resync against the other node at startup.
-Default: <tt>undef</tt>
+If conntrackd should request a complete conntrack
+table resync against the other node at startup.
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--purge_timeout"></a>`purge_timeout`
 
@@ -551,7 +552,8 @@ Data type: `Optional[Conntrackd::Exp_sync]`
 
 on: enable the synchronization of expectations
 array: enable sync on specified expectations
-Default: <tt>undef</tt>
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--track_tcp_states"></a>`track_tcp_states`
 
@@ -919,9 +921,8 @@ Default value: `$conntrackd::commit_timeout`
 
 Data type: `Optional[Enum['yes','no']]`
 
-boolean: Order conntrackd to request a complete conntrack
-         table resync against the other node at startup.
-Default: <tt>undef</tt>
+If conntrackd should request a complete conntrack
+table resync against the other node at startup.
 
 Default value: `$conntrackd::startup_resync`
 
@@ -1098,7 +1099,6 @@ Data type: `Optional[Conntrackd::Exp_sync]`
 
 on: enable the synchronization of expectations
 array: enable sync on specified expectations
-Default: <tt>undef</tt>
 
 Default value: `$conntrackd::expectation_sync`
 
