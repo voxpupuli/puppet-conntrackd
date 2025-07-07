@@ -97,10 +97,10 @@ General {
 		}
 
 		Address Ignore {
-<% $conntrackd::config::ignore_ips_ipv4.each |$address| { -%>
+<% $conntrackd::config::ignore_ips_ipv4.filter |$addr| { $addr =~ Stdlib::IP::Address::V4 }.each |$address| { -%>
 			IPv4_address <%= $address %>
 <% } -%>
-<% $conntrackd::config::ignore_ips_ipv6.each |$address| { -%>
+<% $conntrackd::config::ignore_ips_ipv6.filter |$addr| { $addr =~ Stdlib::IP::Address::V6 }.each |$address| { -%>
 			IPv6_address <%= $address %>
 <% } -%>
 		}
