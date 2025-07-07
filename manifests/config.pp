@@ -128,6 +128,10 @@
 #            to primary.
 #   Default: <tt>undef</tt>
 #
+# @param startup_resync
+#   If conntrackd should request a complete conntrack
+#   table resync against the other node at startup.
+#
 # @param purge_timeout
 #   integer: If the firewall replica goes from primary to backup,
 #            the conntrackd -t command is invoked in the script.
@@ -210,6 +214,10 @@
 #            you can enable it with this option.
 #   Default: <tt>Off</tt>
 #
+# @param expectation_sync
+#   on: enable the synchronization of expectations
+#   array: enable sync on specified expectations 
+#
 # @param track_tcp_states
 #   array:   The specific TCP states to sync
 #   Default: <tt>[ 'ESTABLISHED', 'CLOSED', 'TIME_WAIT', 'CLOSE_WAIT' ]</tt>
@@ -269,6 +277,7 @@ class conntrackd::config (
   Integer                          $refresh_time               = $conntrackd::refresh_time,
   Integer                          $cache_timeout              = $conntrackd::cache_timeout,
   Optional[Integer]                $commit_timeout             = $conntrackd::commit_timeout,
+  Optional[Enum['yes','no']]       $startup_resync             = $conntrackd::startup_resync,
   Integer                          $purge_timeout              = $conntrackd::purge_timeout,
   Optional[Enum['On','Off']]       $systemd                    = $conntrackd::systemd,
   String                           $interface                  = $conntrackd::interface,
@@ -285,6 +294,7 @@ class conntrackd::config (
   Array                            $filter_accept_protocols    = $conntrackd::filter_accept_protocols,
   Enum['Kernelspace','Userspace']  $filter_from                = $conntrackd::filter_from,
   String                           $tcp_window_tracking        = $conntrackd::tcp_window_tracking,
+  Optional[Conntrackd::Exp_sync]   $expectation_sync           = $conntrackd::expectation_sync,
   Array                            $track_tcp_states           = $conntrackd::track_tcp_states,
   String                           $scheduler_type             = $conntrackd::scheduler_type,
   String                           $scheduler_priority         = $conntrackd::scheduler_priority,

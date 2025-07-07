@@ -16,6 +16,10 @@
 * `conntrackd::package`: This class exists to coordinate all software package management related
 * `conntrackd::service`: This class exists to coordinate all service management related actions,
 
+### Data types
+
+* [`Conntrackd::Exp_sync`](#Conntrackd--Exp_sync): Type for the config option ExpectationSync
+
 ## Classes
 
 ### <a name="conntrackd"></a>`conntrackd`
@@ -85,6 +89,7 @@ The following parameters are available in the `conntrackd` class:
 * [`refresh_time`](#-conntrackd--refresh_time)
 * [`cache_timeout`](#-conntrackd--cache_timeout)
 * [`commit_timeout`](#-conntrackd--commit_timeout)
+* [`startup_resync`](#-conntrackd--startup_resync)
 * [`purge_timeout`](#-conntrackd--purge_timeout)
 * [`systemd`](#-conntrackd--systemd)
 * [`protocol`](#-conntrackd--protocol)
@@ -102,6 +107,7 @@ The following parameters are available in the `conntrackd` class:
 * [`filter_accept_protocols`](#-conntrackd--filter_accept_protocols)
 * [`filter_from`](#-conntrackd--filter_from)
 * [`tcp_window_tracking`](#-conntrackd--tcp_window_tracking)
+* [`expectation_sync`](#-conntrackd--expectation_sync)
 * [`track_tcp_states`](#-conntrackd--track_tcp_states)
 * [`scheduler_type`](#-conntrackd--scheduler_type)
 * [`scheduler_priority`](#-conntrackd--scheduler_priority)
@@ -125,7 +131,8 @@ String. Controls if the managed resources shall be <tt>present</tt> or
 * System modifications (if any) will be reverted as good as possible
   (e.g. removal of created users, services, changed log settings, ...).
 * This is thus destructive and should be used with care.
-Defaults to <tt>present</tt>.
+
+Default value: `'present'`
 
 ##### <a name="-conntrackd--autoupgrade"></a>`autoupgrade`
 
@@ -137,7 +144,8 @@ version than the present one. The exact behavior is provider dependent.
 Q.v.:
 * Puppet type reference: {package, "upgradeable"}[http://j.mp/xbxmNP]
 * {Puppet's package provider source code}[http://j.mp/wtVCaL]
-Defaults to <tt>false</tt>.
+
+Default value: `false`
 
 ##### <a name="-conntrackd--status"></a>`status`
 
@@ -163,10 +171,12 @@ String to define the status of the service. Possible values:
   does not care whether the service is running or not. For example, this may
   be useful if a cluster management software is used to decide when to start
   the service plus assuring it is running on the desired node.
-Defaults to <tt>enabled</tt>. The singular form ("service") is used for the
+The singular form ("service") is used for the
 sake of convenience. Of course, the defined status affects all services if
 more than one is managed (see <tt>service.pp</tt> to check if this is the
 case).
+
+Default value: `'enabled'`
 
 ##### <a name="-conntrackd--package"></a>`package`
 
@@ -174,11 +184,15 @@ Data type: `Array`
 
 The name(s) of the conntrack package(s)
 
+Default value: `[]`
+
 ##### <a name="-conntrackd--service_name"></a>`service_name`
 
 Data type: `String`
 
 The name of the conntrackd service
+
+Default value: `'conntrackd'`
 
 ##### <a name="-conntrackd--service_hasrestart"></a>`service_hasrestart`
 
@@ -186,11 +200,15 @@ Data type: `Boolean`
 
 The service `hasrestart` attribute
 
+Default value: `true`
+
 ##### <a name="-conntrackd--service_hasstatus"></a>`service_hasstatus`
 
 Data type: `Boolean`
 
 The service `hasstatus` attribute
+
+Default value: `true`
 
 ##### <a name="-conntrackd--service_pattern"></a>`service_pattern`
 
@@ -198,11 +216,15 @@ Data type: `String`
 
 The service `pattern` attribute
 
+Default value: `'conntrackd'`
+
 ##### <a name="-conntrackd--service_status"></a>`service_status`
 
 Data type: `String`
 
 The service `status` attribute
+
+Default value: `'/usr/bin/pgrep conntrackd >/dev/null'`
 
 ##### <a name="-conntrackd--config_dir"></a>`config_dir`
 
@@ -210,18 +232,23 @@ Data type: `String`
 
 Top-level directory for configuration
 
+Default value: `'/etc/conntrackd'`
+
 ##### <a name="-conntrackd--config_filename"></a>`config_filename`
 
 Data type: `String`
 
 Config file name
 
+Default value: `'conntrackd.conf'`
+
 ##### <a name="-conntrackd--hashsize"></a>`hashsize`
 
 Data type: `Integer`
 
 integer: Number of buckets in the cache hashtable.
-Default: <tt>32768</tt>
+
+Default value: `32768`
 
 ##### <a name="-conntrackd--logfile"></a>`logfile`
 
@@ -230,7 +257,8 @@ Data type: `String`
 string:  fully qualified path to the logfile or 'Off'
          (directory must exist and be writable)
 values:  <tt>on</tt>, <tt>off</tt>, <tt><path to file></tt>
-Default: <tt>off</tt>
+
+Default value: `'off'`
 
 ##### <a name="-conntrackd--syslog"></a>`syslog`
 
@@ -238,21 +266,24 @@ Data type: `String`
 
 string:  enable syslog logging
 values:  <tt>on</tt>, <tt>off</tt> or <tt><syslog facility></tt>
-Default: <tt>on</tt>
+
+Default value: `'on'`
 
 ##### <a name="-conntrackd--lockfile"></a>`lockfile`
 
 Data type: `String`
 
 string:  fully qualified path to the lockfile
-Default: <tt>/var/lock/conntrack.lock</tt>
+
+Default value: `'/var/lock/conntrack.lock'`
 
 ##### <a name="-conntrackd--sock_path"></a>`sock_path`
 
 Data type: `String`
 
 string:  fully qualified path to the UNIX socket used for configuration
-Default: <tt>/var/run/conntrackd.ctl</tt>
+
+Default value: `'/var/run/conntrackd.ctl'`
 
 ##### <a name="-conntrackd--ignore_ips_ipv4"></a>`ignore_ips_ipv4`
 
@@ -260,7 +291,8 @@ Data type: `Array`
 
 array:   list of IPv4 addresses to ignore.
          should include this node's address
-Default: <tt>[ '127.0.0.1', '192.168.0.1', '10.1.1.1' ]</tt>
+
+Default value: `['127.0.0.1', '192.168.0.1', '10.1.1.1']`
 
 ##### <a name="-conntrackd--ignore_ips_ipv6"></a>`ignore_ips_ipv6`
 
@@ -268,7 +300,8 @@ Data type: `Array`
 
 array:   list of IPv4 addresses to ignore.
          should include this node's address
-Default: <tt>[ '::1' ]</tt>
+
+Default value: `['::1']`
 
 ##### <a name="-conntrackd--tcp_flows"></a>`tcp_flows`
 
@@ -276,7 +309,8 @@ Data type: `Array`
 
 array:   list of flows to monitor
 allowed: 'ESTABLISHED', 'CLOSED', 'TIME_WAIT', 'CLOSE_WAIT'
-Default: <tt>[ 'ESTABLISHED', 'CLOSED', 'TIME_WAIT', 'CLOSE_WAIT' ]</tt>
+
+Default value: `['ESTABLISHED', 'CLOSED', 'TIME_WAIT', 'CLOSE_WAIT']`
 
 ##### <a name="-conntrackd--netlinkbuffersize"></a>`netlinkbuffersize`
 
@@ -285,6 +319,8 @@ Data type: `Integer`
 integer: Netlink event socket buffer size
 Default: <tt>2097152</tt>
 
+Default value: `2097152`
+
 ##### <a name="-conntrackd--netlinkbuffersizemaxgrowth"></a>`netlinkbuffersizemaxgrowth`
 
 Data type: `Integer`
@@ -292,7 +328,8 @@ Data type: `Integer`
 integer: The daemon doubles the size of the netlink event socket buffer size
          if it detects netlink event message dropping . This clause sets the
          maximum buffer size growth that can be reached.
-Default: <tt>8388608</tt>
+
+Default value: `8388608`
 
 ##### <a name="-conntrackd--netlinkoverrunresync"></a>`netlinkoverrunresync`
 
@@ -301,7 +338,8 @@ Data type: `String`
 boolean: If the daemon detects that Netlink is dropping state-change events,
          it automatically schedules a resynchronization against the Kernel
          after 30 seconds (default value)
-Default: <tt>on</tt>
+
+Default value: `'on'`
 
 ##### <a name="-conntrackd--netlinkeventsreliable"></a>`netlinkeventsreliable`
 
@@ -310,7 +348,8 @@ Data type: `String`
 boolean: If you want reliable event reporting over Netlink, set on this
          option. If you set on this clause, it is a good idea to set off
          NetlinkOverrunResync.
-Default: <tt>Off</tt>
+
+Default value: `'Off'`
 
 ##### <a name="-conntrackd--pollsecs"></a>`pollsecs`
 
@@ -319,7 +358,8 @@ Data type: `Optional[Integer]`
 integer: By default, the daemon receives state updates following an
          event-driven model. You can modify this behaviour by switching to
          polling mode with the PollSecs clause.
-Default: <tt>Off</tt>
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--eventiterationlimit"></a>`eventiterationlimit`
 
@@ -330,7 +370,8 @@ integer: The daemon prioritizes the handling of state-change events coming
          state-change events (coming from kernel-space) that the daemon
          will handle after which it will handle other events coming from the
          network or userspace
-Default: <tt>100</tt>
+
+Default value: `100`
 
 ##### <a name="-conntrackd--sync_mode"></a>`sync_mode`
 
@@ -338,14 +379,16 @@ Data type: `Enum['FTFW', 'NOTRACK', 'ALARM']`
 
 string:  The syncronisation mode to use
 values:  one of: <tt>FTFW</tt>, <tt>NOTRACK</tt> or <tt>ALARM</tt>
-Default: <tt>FTFW</tt>
+
+Default value: `'FTFW'`
 
 ##### <a name="-conntrackd--resend_queue_size"></a>`resend_queue_size`
 
 Data type: `Integer`
 
 integer: Size of the resend queue (in objects)
-Default: <tt>131072</tt>
+
+Default value: `131072`
 
 ##### <a name="-conntrackd--ack_window_size"></a>`ack_window_size`
 
@@ -353,7 +396,8 @@ Data type: `Integer`
 
 integer: acknowledgement window size. If you decrease this
          value, the number of acknowlegdments increases
-Default: <tt>300</tt>
+
+Default value: `300`
 
 ##### <a name="-conntrackd--disable_external_cache"></a>`disable_external_cache`
 
@@ -363,14 +407,16 @@ boolean: This clause allows you to disable the external cache. Thus,
          the state entries are directly injected into the kernel
          conntrack table.
 values:  one of: <tt>On</tt>, <tt>Off</tt>
-Default: <tt>Off</tt>
+
+Default value: `'Off'`
 
 ##### <a name="-conntrackd--disable_internal_cache"></a>`disable_internal_cache`
 
 Data type: `String`
 
 boolean: This clause allows you to disable the internal cache.
-Default: <tt>Off</tt>
+
+Default value: `'Off'`
 
 ##### <a name="-conntrackd--refresh_time"></a>`refresh_time`
 
@@ -378,7 +424,8 @@ Data type: `Integer`
 
 integer: ALARM Mode: If a conntrack entry is not modified in <= 15 seconds,
          then a message is broadcasted.
-Default: <tt>15</tt>
+
+Default value: `15`
 
 ##### <a name="-conntrackd--cache_timeout"></a>`cache_timeout`
 
@@ -387,7 +434,8 @@ Data type: `Integer`
 integer: If we don't receive a notification about the state of
          an entry in the external cache after N seconds, then
          remove it.
-Default: <tt>180</tt>
+
+Default value: `180`
 
 ##### <a name="-conntrackd--commit_timeout"></a>`commit_timeout`
 
@@ -396,7 +444,17 @@ Data type: `Optional[Integer]`
 integer: This parameter allows you to set an initial fixed timeout
          for the committed entries when this node goes from backup
          to primary.
-Default: <tt>undef</tt>
+
+Default value: `undef`
+
+##### <a name="-conntrackd--startup_resync"></a>`startup_resync`
+
+Data type: `Optional[Enum['yes','no']]`
+
+If conntrackd should request a complete conntrack
+table resync against the other node at startup.
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--purge_timeout"></a>`purge_timeout`
 
@@ -405,7 +463,8 @@ Data type: `Integer`
 integer: If the firewall replica goes from primary to backup,
          the conntrackd -t command is invoked in the script.
          This command schedules a flush of the table in N seconds.
-Default: <tt>60</tt>
+
+Default value: `60`
 
 ##### <a name="-conntrackd--systemd"></a>`systemd`
 
@@ -414,7 +473,8 @@ Data type: `Optional[Enum['On','Off']]`
 String to Enable/Disable systemd support. Possible values:
 * <tt>On</tt>: Enable systemd support
 * <tt>Off</tt>: Disable systemd support
-Defaults to <tt>undef</tt>.
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--protocol"></a>`protocol`
 
@@ -422,15 +482,17 @@ Data type: `Enum['Multicast', 'UDP']`
 
 string:  The protocol to use for syncing.
 values:  <tt>Multicast</tt> or <tt>UDP</tt>
-Default: <tt>Multicast</tt>
+
+Default value: `'Multicast'`
 
 ##### <a name="-conntrackd--interface"></a>`interface`
 
-Data type: `String`
+Data type: `Optional[String]`
 
 string:  Dedicated physical interface for communicating with the other host.
 value:   <tt><interface name></tt>
-Default: <tt>undef</tt>
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--ipv4_address"></a>`ipv4_address`
 
@@ -438,22 +500,25 @@ Data type: `String`
 
 string:  Multicast mode only: The multicast address to commuincate over
 value:   *Must* be set for Multicast mode: <tt><multicast address></tt>
-Default: <tt>255.0.0.50</tt>
+
+Default value: `'225.0.0.50'`
 
 ##### <a name="-conntrackd--ipv4_interface"></a>`ipv4_interface`
 
-Data type: `String`
+Data type: `Optional[String]`
 
 string:  The ip address to bind to for multicast and UDP connections.
 value:   *Must* be set for Multicast or UDP mode: <tt><ipaddress></tt>
-Default: <tt>undef</tt>
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--mcast_group"></a>`mcast_group`
 
 Data type: `String`
 
 integer: The multicast group to use for Multicast mode
-Default: <tt>3780</tt>
+
+Default value: `'3780'`
 
 ##### <a name="-conntrackd--sndsocketbuffer"></a>`sndsocketbuffer`
 
@@ -461,7 +526,8 @@ Data type: `Integer`
 
 integer: The multicast sender uses a buffer to enqueue the packets
          that are going to be transmitted.
-Default: <tt>1249280</tt>
+
+Default value: `1249280`
 
 ##### <a name="-conntrackd--rcvsocketbuffer"></a>`rcvsocketbuffer`
 
@@ -469,42 +535,48 @@ Data type: `Integer`
 
 integer: The multicast receiver uses a buffer to enqueue the packets
          that the socket is pending to handle.
-Default: <tt>1249280</tt>
+
+Default value: `1249280`
 
 ##### <a name="-conntrackd--checksum"></a>`checksum`
 
 Data type: `String`
 
 integer: Enable/Disable message checksumming.
-Default: <tt>on</tt>
+
+Default value: `'on'`
 
 ##### <a name="-conntrackd--udp_ipv6_address"></a>`udp_ipv6_address`
 
 Data type: `Optional[String]`
 
 string:  The IPv6 interface address to bind to in UDP mode
-Default: <tt>undef</tt>
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--udp_ipv4_dest"></a>`udp_ipv4_dest`
 
 Data type: `Optional[String]`
 
 string:  The IPv4 interface of the other node when UDP is enabled
-Default: <tt>undef</tt>
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--udp_ipv6_dest"></a>`udp_ipv6_dest`
 
 Data type: `Optional[String]`
 
 string:  The IPv6 interface of the other node when UDP is enabled
-Default: <tt>undef</tt>
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--udp_port"></a>`udp_port`
 
 Data type: `Integer`
 
 integer: The UDP port to communicate over (should be the same on both nodes)
-Default: <tt>3780</tt>
+
+Default value: `3780`
 
 ##### <a name="-conntrackd--filter_accept_protocols"></a>`filter_accept_protocols`
 
@@ -513,7 +585,8 @@ Data type: `Array`
 array:   Accept only certain protocols
 values:  <tt>TCP</tt>, <tt>SCTP</tt>, <tt>DCCP</tt>,
          <tt>UDP</tt>, <tt>ICMP</tt>, <tt>IPv6-ICMP</tt>
-Default: <tt>[ 'TCP', 'SCTP', 'DCCP' ]</tt>
+
+Default value: `['TCP', 'SCTP', 'DCCP']`
 
 ##### <a name="-conntrackd--filter_from"></a>`filter_from`
 
@@ -521,7 +594,8 @@ Data type: `Enum['Kernelspace','Userspace']`
 
 String Where the filtering occurs
 values:  <tt>Kernelspace</tt>, <tt>Userspace</tt>
-Default: <tt>Userspace</tt>
+
+Default value: `'Userspace'`
 
 ##### <a name="-conntrackd--tcp_window_tracking"></a>`tcp_window_tracking`
 
@@ -529,14 +603,25 @@ Data type: `String`
 
 boolean: TCP state-entries have window tracking disabled by default,
          you can enable it with this option.
-Default: <tt>Off</tt>
+
+Default value: `'Off'`
+
+##### <a name="-conntrackd--expectation_sync"></a>`expectation_sync`
+
+Data type: `Optional[Conntrackd::Exp_sync]`
+
+on: enable the synchronization of expectations
+array: enable sync on specified expectations
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--track_tcp_states"></a>`track_tcp_states`
 
 Data type: `Array`
 
 array:   The specific TCP states to sync
-Default: <tt>[ 'ESTABLISHED', 'CLOSED', 'TIME_WAIT', 'CLOSE_WAIT' ]</tt>
+
+Default value: `['ESTABLISHED', 'CLOSED', 'TIME_WAIT', 'CLOSE_WAIT']`
 
 ##### <a name="-conntrackd--scheduler_type"></a>`scheduler_type`
 
@@ -546,7 +631,8 @@ string:  Select a different scheduler for the daemon.
          See man sched_setscheduler(2) for more information. Using a RT
          scheduler reduces the chances to overrun the Netlink buffer.
 values:  <tt>RR</tt>, <tt>FIFO</tt>
-Default: <tt>FIFO</tt>
+
+Default value: `'FIFO'`
 
 ##### <a name="-conntrackd--scheduler_priority"></a>`scheduler_priority`
 
@@ -554,7 +640,8 @@ Data type: `String`
 
 integer: scheduler process priority
 range:   <tt>0</tt> - <tt>99</tt>
-Default: <tt>99</tt>
+
+Default value: `'99'`
 
 ##### <a name="-conntrackd--stats_logfile"></a>`stats_logfile`
 
@@ -562,7 +649,8 @@ Data type: `Optional[String]`
 
 string:  enable logging of stastics to a file
 values:  fully qualified path to the statis logfile or 'Off'
-Default: <tt>undef</tt>
+
+Default value: `undef`
 
 ##### <a name="-conntrackd--stats_netlink_reliable"></a>`stats_netlink_reliable`
 
@@ -571,7 +659,8 @@ Data type: `String`
 boolean: If you want reliable event reporting over Netlink, set on this
          option. If you set on this clause, it is a good idea to set off
          NetlinkOverrunResync.
-Default: <tt>Off</tt>
+
+Default value: `'Off'`
 
 ##### <a name="-conntrackd--stats_syslog"></a>`stats_syslog`
 
@@ -580,12 +669,14 @@ Data type: `Optional[String]`
 string:  enable syslog logging of statistics
 values:  <tt>on</tt>, <tt>off</tt> or <tt><syslog facility></tt>
 
+Default value: `undef`
+
 ##### <a name="-conntrackd--hashlimit"></a>`hashlimit`
 
 Data type: `Optional[Integer]`
 
 integer: Maximum number of conntracks in table
-Default: <tt>2x the value of /proc/sys/net/netfilter/nf_conntrack_max</tt>
+undef: 2x the value of /proc/sys/net/netfilter/nf_conntrack_max
 
 Default value: `undef`
 
@@ -621,6 +712,7 @@ The following parameters are available in the `conntrackd::config` class:
 * [`refresh_time`](#-conntrackd--config--refresh_time)
 * [`cache_timeout`](#-conntrackd--config--cache_timeout)
 * [`commit_timeout`](#-conntrackd--config--commit_timeout)
+* [`startup_resync`](#-conntrackd--config--startup_resync)
 * [`purge_timeout`](#-conntrackd--config--purge_timeout)
 * [`systemd`](#-conntrackd--config--systemd)
 * [`protocol`](#-conntrackd--config--protocol)
@@ -638,6 +730,7 @@ The following parameters are available in the `conntrackd::config` class:
 * [`filter_accept_protocols`](#-conntrackd--config--filter_accept_protocols)
 * [`filter_from`](#-conntrackd--config--filter_from)
 * [`tcp_window_tracking`](#-conntrackd--config--tcp_window_tracking)
+* [`expectation_sync`](#-conntrackd--config--expectation_sync)
 * [`track_tcp_states`](#-conntrackd--config--track_tcp_states)
 * [`scheduler_type`](#-conntrackd--config--scheduler_type)
 * [`scheduler_priority`](#-conntrackd--config--scheduler_priority)
@@ -891,6 +984,15 @@ Default: <tt>undef</tt>
 
 Default value: `$conntrackd::commit_timeout`
 
+##### <a name="-conntrackd--config--startup_resync"></a>`startup_resync`
+
+Data type: `Optional[Enum['yes','no']]`
+
+If conntrackd should request a complete conntrack
+table resync against the other node at startup.
+
+Default value: `$conntrackd::startup_resync`
+
 ##### <a name="-conntrackd--config--purge_timeout"></a>`purge_timeout`
 
 Data type: `Integer`
@@ -1058,6 +1160,15 @@ Default: <tt>Off</tt>
 
 Default value: `$conntrackd::tcp_window_tracking`
 
+##### <a name="-conntrackd--config--expectation_sync"></a>`expectation_sync`
+
+Data type: `Optional[Conntrackd::Exp_sync]`
+
+on: enable the synchronization of expectations
+array: enable sync on specified expectations
+
+Default value: `$conntrackd::expectation_sync`
+
 ##### <a name="-conntrackd--config--track_tcp_states"></a>`track_tcp_states`
 
 Data type: `Array`
@@ -1118,4 +1229,12 @@ string:  enable syslog logging of statistics
 values:  <tt>on</tt>, <tt>off</tt> or <tt><syslog facility></tt>
 
 Default value: `$conntrackd::stats_syslog`
+
+## Data types
+
+### <a name="Conntrackd--Exp_sync"></a>`Conntrackd::Exp_sync`
+
+Type for the config option ExpectationSync
+
+Alias of `Variant[Enum['on'], Array[String[1]]]`
 
