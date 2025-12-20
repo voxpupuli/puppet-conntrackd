@@ -1,3 +1,6 @@
 ---
 spec/spec_helper.rb:
   hiera_config: "'spec/hiera.yaml'"
+.github/workflows/ci.yml:
+  with:
+    beaker_hypervisor: docker
