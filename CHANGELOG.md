@@ -4,6 +4,30 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.0.0](https://github.com/voxpupuli/puppet-conntrackd/tree/v4.0.0) (2025-12-20)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-conntrackd/compare/v3.0.0...v4.0.0)
+
+**Breaking changes:**
+
+- Drop puppet, update openvox minimum version to 8.19 [\#45](https://github.com/voxpupuli/puppet-conntrackd/pull/45) ([TheMeier](https://github.com/TheMeier))
+- Drop Ubuntu 18.04 support [\#36](https://github.com/voxpupuli/puppet-conntrackd/pull/36) ([zilchms](https://github.com/zilchms))
+- Drop Debian 10 support [\#35](https://github.com/voxpupuli/puppet-conntrackd/pull/35) ([zilchms](https://github.com/zilchms))
+- Drop CentOS, RedHat, Rocky and AlmaLinux 7 and 8 support [\#34](https://github.com/voxpupuli/puppet-conntrackd/pull/34) ([zilchms](https://github.com/zilchms))
+- Quickfix: look for  antagonist parameters [\#27](https://github.com/voxpupuli/puppet-conntrackd/pull/27) ([JGodin-C2C](https://github.com/JGodin-C2C))
+- Deprecation: Drop nice and sock\_backlog options that are deprecated in conntrackd [\#24](https://github.com/voxpupuli/puppet-conntrackd/pull/24) ([JGodin-C2C](https://github.com/JGodin-C2C))
+
+**Implemented enhancements:**
+
+- add params for ExpectationSync and StartupResync, mv default parameters into code [\#43](https://github.com/voxpupuli/puppet-conntrackd/pull/43) ([trefzer](https://github.com/trefzer))
+- metadata.json: Add OpenVox [\#39](https://github.com/voxpupuli/puppet-conntrackd/pull/39) ([jstraw](https://github.com/jstraw))
+- Feature: add filter\_from configuration [\#26](https://github.com/voxpupuli/puppet-conntrackd/pull/26) ([JGodin-C2C](https://github.com/JGodin-C2C))
+- feature: add support for systemd option [\#25](https://github.com/voxpupuli/puppet-conntrackd/pull/25) ([JGodin-C2C](https://github.com/JGodin-C2C))
+
+**Fixed bugs:**
+
+- adapt template to not add empty address lines [\#44](https://github.com/voxpupuli/puppet-conntrackd/pull/44) ([trefzer](https://github.com/trefzer))
+
 ## [v3.0.0](https://github.com/voxpupuli/puppet-conntrackd/tree/v3.0.0) (2024-01-18)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-conntrackd/compare/v2.0.0...v3.0.0)
