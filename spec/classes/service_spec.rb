@@ -13,9 +13,9 @@ describe 'conntrackd::service' do
         it { is_expected.to compile }
 
         it do
-          is_expected.to contain_service('conntrackd').
-            with_ensure('running').
-            with_enable(true)
+          is_expected.to contain_service('conntrackd')
+            .with_ensure('running')
+            .with_enable(true)
         end
       end
 
@@ -31,9 +31,9 @@ describe 'conntrackd::service' do
         it { is_expected.to compile }
 
         it do
-          is_expected.to contain_service('conntrackd').
-            with_ensure('stopped').
-            with_enable(false)
+          is_expected.to contain_service('conntrackd')
+            .with_ensure('stopped')
+            .with_enable(false)
         end
       end
     end

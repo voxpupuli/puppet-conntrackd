@@ -20,8 +20,8 @@ describe 'conntrackd::package' do
         it { is_expected.to compile }
 
         it do
-          is_expected.to contain_package('conntrack-package').
-            with_ensure('present')
+          is_expected.to contain_package('conntrack-package')
+            .with_ensure('present')
         end
       end
 
@@ -39,8 +39,8 @@ describe 'conntrackd::package' do
         it { is_expected.to compile }
 
         it do
-          is_expected.to contain_package('conntrack-package').
-            with_ensure('latest')
+          is_expected.to contain_package('conntrack-package')
+            .with_ensure('latest')
         end
       end
 
@@ -57,8 +57,8 @@ describe 'conntrackd::package' do
         it { is_expected.to compile }
 
         it do
-          is_expected.to contain_package('conntrack-package').
-            with_ensure('purged')
+          is_expected.to contain_package('conntrack-package')
+            .with_ensure('purged')
         end
       end
     end

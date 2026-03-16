@@ -13,15 +13,15 @@ describe 'conntrackd::config' do
         it { is_expected.to compile }
 
         it do
-          is_expected.to contain_file('conntrackd-confdir').
-            with_ensure('directory')
+          is_expected.to contain_file('conntrackd-confdir')
+            .with_ensure('directory')
         end
 
         it do
-          is_expected.to contain_file('conntrackd-config').
-            with_ensure('present').
-            that_requires('File[conntrackd-confdir]').
-            that_notifies('Service[conntrackd]')
+          is_expected.to contain_file('conntrackd-config')
+            .with_ensure('present')
+            .that_requires('File[conntrackd-confdir]')
+            .that_notifies('Service[conntrackd]')
         end
       end
     end
