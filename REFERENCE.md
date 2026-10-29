@@ -1237,4 +1237,3 @@ Default value: `$conntrackd::stats_syslog`
 Type for the config option ExpectationSync
 
 Alias of `Variant[Enum['on'], Array[String[1]]]`
-
